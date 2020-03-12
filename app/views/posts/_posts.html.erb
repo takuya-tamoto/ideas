@@ -1,7 +1,7 @@
 <ul class="container list-unstyled">
   <% posts.each do |post| %>
     <li class="media pt-4 mb-3 border-bottom">
-      <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 40 }) %>" alt="">
+      <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 80 }) %>" alt="">
       <div class="media-body">
         <div>
           <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted">投稿日時 <%= post.created_at %></span>
