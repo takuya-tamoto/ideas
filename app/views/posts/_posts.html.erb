@@ -1,0 +1,23 @@
+<ul class="container list-unstyled">
+  <% posts.each do |post| %>
+    <li class="media pt-4 mb-3 border-bottom">
+      <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 40 }) %>" alt="">
+      <div class="media-body">
+        <div>
+          <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted">投稿日時 <%= post.created_at %></span>
+        </div>
+        <div>
+          <p><%= post.title %></p>
+          <p><%= post.content %></p>
+        </div>
+        <div class="pb-2">
+          <% if current_user == post.user %>
+          <%= link_to "削除", post, method: :delete, data: { confirm: "本当に削除してもよろしいですか?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+
+  <% end %>
+  <%= paginate posts %>
+</ul>

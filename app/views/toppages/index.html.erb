@@ -1,8 +1,60 @@
+<% if logged_in? %>
+  <div class="pl-5 pr-5 pt-4 row">
+    <aside class="col-sm-4">
+      <%= form_with(model: @post, local: true) do |f| %>
+        <div class="form-group">
+          <h5>タイトル</h5>
+          <%= f.text_field :title, class: 'form-control' %>
+          
+          <h5>IDEA</h5>
+          <%= f.text_area :content, class: 'form-control', rows: 7 %>
+        </div>
+        <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </aside>
+    <div class="col-sm-8">
+      <%= render 'posts/posts', posts: @posts %>
+    </div>
+  </div>
+  
+<% else %>
+
 <div class="jumbotron jumbotron-fluid">
   <div class="container text-left">
-    <h1 class="pb-7 pt-5 text-light">I D E A S</h1>
-    <h3 class="pb-4 pt-5 text-light">あなたの思いつきを</h3>
-    <h3 class="pb-4 text-light">みんなに発信するツール</h3>
+    <h1 class="pb-7  text-light">I D E A S</h1>
+    <h3 class="pb-4 pt-5 text-light">あなたの閃きで</h3>
+    <h3 class="pb-4 text-light">みんなを幸せにするツール</h3>
     <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
   </div>
 </div>
+<section id="idea">
+  <div class="container text-center">
+    <h1 class="mt-5"><strong>I D E A S</strong></h1>
+      <h3 class="pb-3 mb-4 mt-4">アイデアに価値（value)を！！</h3>
+      <h5 class="pb-4">
+        IDEASは、あなたが閃いたことを自由に発信可能なサイトです！
+      </h5>
+      <h5 class="pb-4">
+        仕事や家庭で新たなアイデアを閃いたけど、結びつきそうにない・・・
+      </h5>
+      <h5 class="pb-4">
+        このIDEASを通して、閃きを発信し、まわりの人々を豊かにしていきませんか？
+      </h5>
+      <h5 class="pb-4">
+        あなたのアイデアが他の人にとっては重要なこともあります。
+      </h5>
+      <h5 class="pb-4">
+        ぜひ、自由にご利用ください！  
+      </h5>
+        <div class="border-bottom">
+          <h5 class="pt-5 ">
+            まずは、登録から
+          </h5>
+           <%= link_to '新規登録', signup_path, class: ' mb-3 btn btn-lg btn-primary' %>
+        </div>
+  </div>
+</section>
+<footer class="text-center pt-3 border-top">
+            &copy; 2020 Ideas Inc.
+</footer>
+<% end %>
