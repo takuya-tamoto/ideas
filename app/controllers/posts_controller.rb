@@ -14,6 +14,26 @@ class PostsController < ApplicationController
     end  
   end
   
+  def show
+    @post = Post.find(params[:id])
+  end
+  
+  def edit
+    @post = Post.find(params[:id])
+  end
+  
+  def update
+    @post = Post.find(params[:id])
+
+    if @post.update(task_params)
+    flash[:success] = 'タスクが編集されました'
+    redirect_to @post
+    else
+    flash.now[:danger] = 'タスクが編集されませんでした'
+    render :new
+    end
+  end
+  
 
   def destroy
     @post.destroy

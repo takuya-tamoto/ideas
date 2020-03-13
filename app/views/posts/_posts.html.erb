@@ -26,6 +26,9 @@
               <% end %>
             </li>
             <li class="list-inline-item">
+              <%= link_to '詳細',post_path(post), class: 'btn btn-success btn-sm' %>
+            </li>
+            <li class="list-inline-item">
               <% if current_user == post.user %>
                 <%= link_to "削除", post, method: :delete, data: { confirm: "本当に削除してもよろしいですか?" }, class: 'btn btn-danger btn-sm' %>
               <% end %>
@@ -34,7 +37,6 @@
         </div>
       </div>
     </li>
-
-  <% end %>
+　 <% end %>
   <%= paginate posts %>
 </ul>
