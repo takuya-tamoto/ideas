@@ -10,25 +10,30 @@
       <p><%= @post.content %></p>
     </div>
     <ul class="list-inline">
-            <li class="list-inline-item">
-              <% if current_user.favorite?(@post) %>
-                <%= form_with(model: current_user.favorites.find_by(post_id: @post.id), local: true, method: :delete) do |f| %>
-                  <%= hidden_field_tag :post_id, @post.id %>
-                  <%= f.submit 'いいね！解除', class: 'btn btn-danger btn-sm'%>
-                <% end %>
-              <% else %>
-                <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
-                  <%= hidden_field_tag :post_id, @post.id %>
-                  <%= f.submit 'いいね！' , class: 'btn btn-primary btn-sm'%>
-                <% end %>
-              <% end %>
-            </li>
-            <li class="list-inline-item">
-              <% if current_user == @post.user %>
-                <%= link_to "削除", @post, method: :delete, data: { confirm: "本当に削除してもよろしいですか?" }, class: 'btn btn-danger btn-sm' %>
-              <% end %>
-            </li>
-          </ul>
+      <li class="list-inline-item">
+        <% if current_user.favorite?(@post) %>
+          <%= form_with(model: current_user.favorites.find_by(post_id: @post.id), local: true, method: :delete) do |f| %>
+            <%= hidden_field_tag :post_id, @post.id %>
+            <%= f.submit 'いいね！解除', class: 'btn btn-danger btn-sm'%>
+          <% end %>
+        <% else %>
+          <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
+            <%= hidden_field_tag :post_id, @post.id %>
+            <%= f.submit 'いいね！' , class: 'btn btn-primary btn-sm'%>
+          <% end %>
+        <% end %>
+      </li>
+      <li class="list-inline-item">
+        <% if current_user == @post.user %>
+          <%= link_to "編集",edit_post_path, class: 'btn btn-success btn-sm'%>
+        <% end %>
+      </li>
+      <li class="list-inline-item">
+        <% if current_user == @post.user %>
+          <%= link_to "削除", @post, method: :delete, data: { confirm: "本当に削除してもよろしいですか?" }, class: 'btn btn-danger btn-sm' %>
+        <% end %>
+      </li>
+    </ul>
   </div>
   </li>
 </ul>

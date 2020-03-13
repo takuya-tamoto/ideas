@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
-    if @post.update(task_params)
+    if @post.update(post_params)
     flash[:success] = 'タスクが編集されました'
     redirect_to @post
     else
