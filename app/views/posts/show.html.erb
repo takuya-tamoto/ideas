@@ -37,29 +37,29 @@
   </div>
   </li>
 </ul>
-<div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-      <%= form_with(model: @comment, local: true) do |f| %>
-        <div class="form-group">
-          <%= f.text_area :content, class: 'form-control', rows: 2 %>
-        </div>
-        <%= f.submit 'コメント', class: 'btn btn-primary btn-block' %>
-      <% end %>
-      <% comments.each do |comment| %>
-      <li class="media mb-3">
-      <img class="mr-2 rounded" src="<%= gravatar_url(micropost.user, { size: 50 }) %>" alt="">
-      <div class="media-body">
+<div class="container pb-5">
+  <% @comments.each do |c| %>
+     <li class="media pt-4 mb-3 border-bottom">
+       <img class="mr-2 rounded"src="<%= gravatar_url(c.user, { size: 80 }) %>" alt="">
+       <div class="media-body">
         <div>
-          <%= link_to micropost.user.name, user_path(micropost.user) %> <span class="text-muted">posted at <%= micropost.created_at %></span>
+          <%= link_to c.user.name, user_path(c.user) %> <span class="text-muted">投稿日時 <%= c.created_at %></span>
         </div>
         <div>
-          <p><%= micropost.content %></p>
+          <%= c.content %>
         </div>
-      </div>
-    </li>
+     </li>
   <% end %>
-      </div>
-    </div>
+  <%= form_with(model: [@post, @post.comments.build], local: true) do |f| %>
+   <%= f.text_area :content, class: "form-control", rows: 3 %>
+   <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+   <i class="far fa-comments"></i> コメントする
+   <% end %>
+  <% end %>
 </div>
+      
+      
+
+  
+
 
