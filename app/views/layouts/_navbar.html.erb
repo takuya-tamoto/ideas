@@ -15,7 +15,7 @@
                <li class="dropdown-item"><%= link_to 'マイページ', user_path(current_user) %></li>
                <li class="dropdown-item"><%= link_to 'ユーザー設定', edit_user_path(current_user) %></li>
                <li class="dropdown-item"><%= link_to 'お気に入り一覧',likes_user_path(current_user) %></li>
-               <li class="dropdown-divider"></li>
+            　 <li class="dropdown-item"><%= link_to 'お問合せ', new_contact_path %></li>
                <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
                <li class="dropdown-item"><%= link_to '退会', user_path(current_user), method: :delete, data: { confirm: "本当に退会してもよろしいですか?"} %></li>
             </ul>

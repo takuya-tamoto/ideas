@@ -1,0 +1,17 @@
+<div class=" mt-4 container">
+  <h1>お問い合わせ</h1>
+   <%= form_with(model: @contact, local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+  <div class="form-group">
+    <%= f.label :email, '返信先メールアドレス' %>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+ <div class="form-group">
+   <%= f.label :message, 'お問い合わせ内容' %>
+   <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+ </div>
+ <div class="pb-4">
+  <%= f.submit '送信' %>
+  </div>
+<% end %>
+</div>
