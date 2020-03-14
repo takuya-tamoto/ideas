@@ -7,14 +7,14 @@
     </aside>
   <div class="col-sm-8 ">
     <h3><%= @user.name %></h3>
-    
-    <h5>自己紹介</h5>
+    <h6>性別：<%= @user.sex %></h6>
+    <h6>年齢：<%= @user.age %>代</h6>
+    <h6>自己紹介</h6>
         <p><%= @user.introduce %></p>
-    
   </div>
-  <divs class= "col-sm-2 offset-sm-5">
+  <div class= "col-sm-2 offset-sm-5">
       <span><%= render 'relationships/follow_button', user: @user %></span>
-    </div>
+  </div>
 </div>
 
 

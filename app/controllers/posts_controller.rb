@@ -5,17 +5,18 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = 'メッセージを投稿しました。'
+      flash[:success] = 'アイデアを投稿しました。'
       redirect_to root_url
     else
       @posts = current_user.feed_posts.order(id: :desc).page(params[:page])
-      flash.now[:danger] = 'メッセージの投稿に失敗しました。'
+      flash.now[:danger] = 'アイデアの投稿に失敗しました。'
       render 'toppages/index'
     end  
   end
   
   def show
     @post = Post.find(params[:id])
+   
   end
   
   def edit
@@ -26,10 +27,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.update(post_params)
-    flash[:success] = 'タスクが編集されました'
+    flash[:success] = 'アイデアが編集されました'
     redirect_to @post
     else
-    flash.now[:danger] = 'タスクが編集されませんでした'
+    flash.now[:danger] = 'アイデアが編集されませんでした'
     render :new
     end
   end
@@ -37,7 +38,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    flash[:success] = 'メッセージを削除しました。'
+    flash[:success] = 'アイデアを削除しました。'
     redirect_back(fallback_location: root_path)
   end
   
