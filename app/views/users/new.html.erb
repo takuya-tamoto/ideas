@@ -1,7 +1,7 @@
 <div class="text-center">
   <h1 class="pt-4">新規登録</h1>
 </div>
-<div class="container">
+<div class="container pb-5">
 <div class="row">
   <div class="col-sm-6 offset-sm-3">
 
@@ -27,6 +27,10 @@
         <%= f.label :password_confirmation, 'パスワード（もう1度入力してください）' %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
+      <p>
+        <%= f.check_box :agreement, :as => :boolean, checked:false %>
+        <small><%= link_to '利用規約', protocol_path %>と<%= link_to 'プライバシポリシー', privacy_path %>に同意する</small>
+      </p>
 
       <%= f.submit '新規登録', class: 'btn btn-primary btn-block' %>
     <% end %>
