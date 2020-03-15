@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row pt-3">
-    <aside class="col-sm-4">
+    <aside class="col-md-4">
       <% if @user.image? %>
         <%= image_tag @user.image.thumb.url %>
       <% else %>
         <%= image_tag "/assets/icon.jpg" %>
       <% end %>
     </aside>
-  <div class="col-sm-8 ">
+  <div class="col-md-8 ">
     <h3><%= @user.name %></h3>
     <h6>性別：<%= @user.sex %></h6>
     <h6>年齢：<%= @user.age %>代</h6>
@@ -15,7 +15,7 @@
         <p><%= @user.introduce %></p>
     
   </div>
-  <div class= "col-sm-2 offset-sm-5">
+  <div class= "col-md-2 offset-md-5">
       <span><%= render 'relationships/follow_button', user: @user %></span>
   </div>
 </div>
@@ -23,7 +23,7 @@
 
 <div class= "container">
   <div class="row pt-3">
-    <div class="col-md-12">
+    <div class="col-sm-12">
         <ul class="nav nav-tabs nav-justified mb-4">
           <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">IDEAS <span class="badge badge-secondary"><%= @count_posts %></span></a></li>
           <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">フォロー  <span class="badge badge-secondary"><%= @count_followings %></span></a></li>

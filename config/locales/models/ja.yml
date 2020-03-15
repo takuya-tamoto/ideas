@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+        models: user
+      
+     attributes:
+        user:
+        name: 名前
+        email: メールアドレス
+        phone: 電話番号
+        agreement: 利用規約とプライバシーポリシー
+        password: パスワード
