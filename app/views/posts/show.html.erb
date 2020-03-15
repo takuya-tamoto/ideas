@@ -1,7 +1,11 @@
 <ul class="container list-unstyled">
   <li class="media pt-4 pb-3 border-bottom">
-    <img class="mr-2 rounded" src="<%= gravatar_url(@post.user, { size: 130 }) %>" alt="">
-  <div class="media-body">
+    <% if @post.user.image? %>
+        <%= image_tag @post.user.image.thumb130.url %>
+      <% else %>
+        <%= image_tag "/assets/icon.jpg",:size => '130x130' %>
+      <% end %>
+  <div class="media-body pl-3">
     <div>
       <%= link_to @post.user.name, user_path(@post.user) %> <span class="text-muted">投稿日時 <%= @post.created_at %></span>
     </div>
@@ -38,10 +42,15 @@
   </li>
 </ul>
 <div class="container pb-5">
+  <h1>コメント一覧</h1>
   <% @comments.each do |c| %>
-     <li class="media pt-4 mb-3 border-bottom">
-       <img class="mr-2 rounded"src="<%= gravatar_url(c.user, { size: 80 }) %>" alt="">
-       <div class="media-body">
+     <li class="media pt-4 pb-3 border-bottom">
+       <% if c.post.user.image? %>
+        <%= image_tag c.post.user.image.thumb130.url %>
+      <% else %>
+        <%= image_tag "/assets/icon.jpg", :size => '130x130' %>
+      <% end %>
+       <div class="media-body pl-3 pb-5">
         <div>
           <%= link_to c.user.name, user_path(c.user) %> <span class="text-muted">投稿日時 <%= c.created_at %></span>
         </div>

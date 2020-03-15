@@ -52,4 +52,6 @@ class User < ApplicationRecord
     self.fav_posts.include?(fav_post)
   end
   
+  mount_uploader :image, ImageUploader
+  
 end

@@ -1,8 +1,12 @@
 <ul class="container list-unstyled">
   <% posts.each do |post| %>
     <li class="media pt-4 mb-3 border-bottom">
-      <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 80 }) %>" alt="">
-      <div class="media-body">
+      <% if post.user.image? %>
+        <%= image_tag post.user.image.thumb130.url %>
+      <% else %>
+        <%= image_tag "/assets/icon.jpg", :size => '130x130' %>
+      <% end %>
+      <div class="media-body pl-3">
         <div>
           <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted">投稿日時 <%= post.created_at %></span>
         </div>

@@ -1,9 +1,15 @@
 <% if users.any? %>
-  <ul class="list-unstyled">
+  <ul class="list-unstyled ">
     <% users.each do |user| %>
-      <li class="media">
-        <img class="pr-2 pb-3 rounded" src="<%= gravatar_url(user, { size: 95 }) %>" alt="">
-        <div class="media-body">
+      <li class="media pb-4">
+        <div class="rounded-circle">
+          <% if user.image? %>
+            <%= image_tag user.image.thumb130.url %>
+          <% else %>
+            <%= image_tag "/assets/icon.jpg", :size => '130x130' %>
+          <% end %>
+        </div>
+        <div class="media-body pl-3">
           <div>
             <%= user.name %>
           </div>

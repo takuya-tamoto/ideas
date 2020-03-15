@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row pt-3">
     <aside class="col-sm-4">
-      
-      <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 300 }) %>" alt="">
+      <% if @user.image? %>
+        <%= image_tag @user.image.thumb.url %>
+      <% else %>
+        <%= image_tag "/assets/icon.jpg" %>
+      <% end %>
     
     </aside>
   <div class="col-sm-8 ">
