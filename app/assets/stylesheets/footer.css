@@ -4,22 +4,17 @@ html {
 }
 
 body {
-  /* フッタと同じ高さに設定 */
-  margin-bottom: 60px;
-
-  /* 一番下までスクロールした時の余白 */
-  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom:80px;
 }
-
-
+ 
 footer {
-  position: fixed;
-  bottom: 0;
-  margin-bottom: 0;
-  width: 100%;
-
-  /* フッタの高さ */
-  height: 60px;
   
-  
+  position:absolute;
+  bottom:0;
+  width:100%;
 }
+  
+  
